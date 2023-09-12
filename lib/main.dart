@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_app/favorite/favorite-screen-provider.dart';
+import 'package:provider_app/favorite/favorite-screen.dart';
 import 'package:provider_app/provider/count_provider.dart';
 import 'package:provider_app/provider/screen2_provider.dart';
 import 'package:provider_app/screen/count.dart';
@@ -18,7 +20,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => Screen2Provider()),
-          ChangeNotifierProvider(create: (_) => CountProvider())
+          ChangeNotifierProvider(create: (_) => CountProvider()),
+          ChangeNotifierProvider(create: (_) => FavoriteProvider())
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: Screen2(),
+          home: Favorite(),
         ));
   }
 }
