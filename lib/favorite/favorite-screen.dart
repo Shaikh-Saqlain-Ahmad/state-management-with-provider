@@ -12,6 +12,16 @@ class Favorite extends StatefulWidget {
 
 class _FavoriteState extends State<Favorite> {
   List<int> selectedItem = [];
+  List<String> fruits = [
+    'apple',
+    'mango',
+    'orange',
+    'pineapple',
+    'pear',
+    'gauva',
+    'strawberry',
+    'banana'
+  ];
   @override
   Widget build(BuildContext context) {
     // final favoriteProvider = Provider.of<FavoriteProvider>(context);
@@ -20,7 +30,10 @@ class _FavoriteState extends State<Favorite> {
         title: Text("Favorite"),
         actions: [
           InkWell(
-            child: Icon(Icons.favorite),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 22),
+              child: Icon(Icons.favorite),
+            ),
             onTap: () {
               Navigator.push(
                   context,
@@ -34,7 +47,7 @@ class _FavoriteState extends State<Favorite> {
       body: Column(children: [
         Expanded(
           child: ListView.builder(
-              itemCount: 50,
+              itemCount: fruits.length,
               itemBuilder: (context, index) {
                 return Consumer<FavoriteProvider>(
                   builder: (context, value, child) {
@@ -46,7 +59,7 @@ class _FavoriteState extends State<Favorite> {
                           value.additem(index);
                         }
                       },
-                      title: Text('Item' + index.toString()),
+                      title: Text(fruits[index]),
                       trailing: Icon(value.selectedItem.contains(index)
                           ? Icons.favorite
                           : Icons.favorite_border_outlined),
